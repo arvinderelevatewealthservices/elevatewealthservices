@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevate Wealth Services | Your Mutual Fund Partner</title>
+  <meta name="description" content="Start your investment journey with expert mutual fund advisory. AMFI registered distributor offering personalized guidance for all your financial goals.">
+  <meta property="og:title" content="Elevate Wealth Services - Start Your Investment Journey">
+  <meta property="og:description" content="Professional mutual fund distribution with personalized advisory. Begin building wealth today.">
+  <meta property="og:type" content="website">
+  <!-- If you add a favicon later, keep it in root or assets and link it like:
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js for Calculator -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
+  <style>
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --primary: #0F2557;
+      --primary-light: #1E3A8A;
+      --accent: #06B6D4;
+      --accent-dark: #0891B2;
+      --gold: #F59E0B;
+      --gold-light: #FCD34D;
+      --success: #10B981;
+      --bg-light: #F0F9FF;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--primary);
+      background: var(--bg-light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 1000;
+      padding: 0.6rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.3rem 0;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      object-fit: contain;
+    }
+
+    .brand-text-main {
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .brand-text-sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary-light);
+      opacity: 0.8;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* ========== HERO SECTION ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
+      padding: 7rem 1.5rem 4rem;
+    }
+    
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.12;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .shape:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+    
+    .shape:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      width: 120px;
+      height: 120px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      animation-delay: 5s;
+    }
+    
+    .shape:nth-child(3) {
+      bottom: 10%;
+      left: 30%;
+      width: 100px;
+      height: 100px;
+      background: var(--gold-light);
+      border-radius: 20px;
+      animation-delay: 10s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      animation: slideInLeft 1s ease-out;
+    }
+    
+    .hero-text p {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 2rem;
+      animation: slideInLeft 1s ease-out 0.2s backwards;
+    }
+    
+    .trust-badges {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      animation: slideInLeft 1s ease-out 0.4s backwards;
+    }
+    
+    .badge {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    
+    .badge:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      animation: slideInLeft 1s ease-out 0.6s backwards;
+    }
+    
+    .btn-primary, .btn-secondary {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* ========== QUICK CONNECT FORM ========== */
+    .hero-form {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      animation: slideInRight 1s ease-out;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid rgba(15, 37, 87, 0.1);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: var(--transition);
+      background: white;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+    }
+    
+    .whatsapp-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .form-note {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--primary);
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    
+    /* ========== SECTIONS ========== */
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--primary);
+      opacity: 0.8;
+      margin-bottom: 3.5rem;
+    }
+    
+    /* ========== SERVICES GRID ========== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .service-card p {
+      color: var(--primary);
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+    
+    /* ========== ROLLING TESTIMONIALS ========== */
+    .testimonials-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 5rem 1.5rem;
+      overflow: hidden;
+    }
+    
+    .testimonials-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      height: 200px;
+    }
+    
+    .testimonial-slide {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      animation: testimonialFade 15s infinite;
+    }
+    
+    .testimonial-slide:nth-child(1) { animation-delay: 0s; }
+    .testimonial-slide:nth-child(2) { animation-delay: 5s; }
+    .testimonial-slide:nth-child(3) { animation-delay: 10s; }
+    
+    @keyframes testimonialFade {
+      0%, 33.33% { opacity: 1; transform: scale(1); }
+      33.34%, 100% { opacity: 0; transform: scale(0.95); }
+    }
+    
+    .testimonial-quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-quote::before {
+      content: '"';
+      font-size: 5rem;
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.2;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .testimonial-source {
+      font-size: 1rem;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+    
+    /* ========== ADVANTAGES SECTION ========== */
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .advantage-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border-left: 4px solid var(--accent);
+    }
+    
+    .advantage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-left-color: var(--gold);
+    }
+    
+    .advantage-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .advantage-card p {
+      color: var(--primary);
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+    
+    /* ========== COMPARISON TABLE ========== */
+    .comparison-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+    
+    .comparison-table {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      min-width: 600px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    thead {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+    
+    th {
+      padding: 1.2rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    
+    td {
+      padding: 1.2rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    tbody tr {
+      transition: var(--transition);
+    }
+    
+    tbody tr:hover {
+      background: var(--bg-light);
+    }
+    
+    .highlight {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(245, 158, 11, 0.1));
+      font-weight: 600;
+    }
+    
+    /* ========== ACCORDION ========== */
+    .accordion {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .accordion-item {
+      background: white;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    
+    .accordion-header {
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      transition: var(--transition);
+      user-select: none;
+      background: white;
+      border-radius: 15px;
+    }
+    
+    .accordion-header:hover {
+      background: var(--bg-light);
+    }
+    
+    .accordion-icon {
+      transition: transform 0.3s ease;
+      font-size: 1.5rem;
+      font-weight: 400;
+      min-width: 30px;
+      text-align: center;
+    }
+    
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 800px;
+    }
+    
+    .accordion-body {
+      padding: 0 2rem 1.5rem;
+      color: var(--primary);
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+    
+    /* ========== CALCULATOR ========== */
+    .calculator-container {
+      background: white;
+      border-radius: 30px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .calculator-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tab-btn {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--primary);
+      font-weight: 700;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+    
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .calculator-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .input-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 8px;
+      border-radius: 5px;
+      background: linear-gradient(to right, var(--accent) 0%, var(--accent) 50%, #E5E7EB 50%, #E5E7EB 100%);
+      outline: none;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+      transition: var(--transition);
+    }
+    
+    .slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+    }
+    
+    .slider-value {
+      min-width: 110px;
+      padding: 0.6rem 1rem;
+      background: var(--bg-light);
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+    
+    .calculator-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .result-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+    }
+    
+    .result-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+    
+    .result-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    
+    .chart-container {
+      position: relative;
+      height: 350px;
+      margin-top: 2rem;
+    }
+    
+    /* ========== CONTACT ========== */
+    .contact-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 3rem;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    .contact-card h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-info {
+      font-size: 1.1rem;
+      line-height: 2;
+      margin-bottom: 1rem;
+    }
+    
+    /* ========== FOOTER ========== */
+    .disclaimer {
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    
+    .footer {
+      background: var(--primary);
+      color: white;
+      padding: 4rem 1.5rem 2rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+      opacity: 0.9;
+      line-height: 2;
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 0.95rem;
+    }
+    
+    .footer-section a:hover {
+      color: var(--gold);
+    }
+    
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      opacity: 0.8;
+      font-size: 0.85rem;
+    }
+    
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-text p {
+        font-size: 1.1rem;
+      }
+      
+      .calculator-inputs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .hero {
+        padding: 6.5rem 1rem 3rem;
+      }
+      
+      .hero-form {
+        padding: 2rem 1.5rem;
+      }
+      
+      .services-grid,
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .calculator-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .result-value {
+        font-size: 1.5rem;
+      }
+      
+      .testimonial-quote {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .trust-badges {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .badge {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .accordion-header {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .accordion-body {
+        padding: 0 1.5rem 1.2rem;
+      }
+      
+      th, td {
+        padding: 1rem 0.5rem;
+        font-size: 0.85rem;
+      }
+      
+      .contact-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      .contact-card h3 {
+        font-size: 1.5rem;
+      }
+      
+      .contact-info {
+        font-size: 1rem;
+      }
+      
+      .chart-container {
+        height: 250px;
+      }
+    }
+    
+    /* ========== ANIMATIONS ========== */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <!-- Logo from /assets/ElevateWealthServicesLogo.png -->
+        <img src="assets/ElevateWealthServicesLogo.png" alt="Elevate Wealth Services Logo" class="brand-logo">
+        <div>
+          <div class="brand-text-main">Elevate Wealth</div>
+          <div class="brand-text-sub">Mutual Fund Distributor</div>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#learn">Learn</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="home">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Start Your Wealth Journey Today</h1>
+        <p>Expert mutual fund advisory for beginners and experienced investors. AMFI registered distributor offering personalized guidance for all your financial goals.</p>
+        
+        <div class="trust-badges">
+          <div class="badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            AMFI Registered
+          </div>
+          <div class="badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            Professional Advisory
+          </div>
+          <div class="badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            AMFI Certified
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Get Started</a>
+          <a href="#calculator" class="btn-secondary">Try Calculator</a>
+        </div>
+      </div>
+      
+      <!-- QUICK CONNECT FORM -->
+      <div class="hero-form">
+        <h2 class="form-title">📱 Quick Connect</h2>
+        <form id="whatsappForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" required placeholder="Enter your name" maxlength="50">
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Mobile Number *</label>
+            <input type="tel" id="phone" required pattern="[6-9][0-9]{9}" placeholder="9876543210" maxlength="10">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" required placeholder="name@example.com" maxlength="60">
+          </div>
+          
+          <button type="submit" class="whatsapp-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Connect on WhatsApp
+          </button>
+          
+          <p class="form-note">💬 We respond within 2 hours during office hours (9 AM - 7 PM IST, Mon-Sat)</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES SECTION ========== -->
+  <section class="section" id="services">
+    <h2 class="section-title scroll-reveal">What We Offer</h2>
+    <p class="section-subtitle scroll-reveal">Comprehensive mutual fund services for every investor</p>
+    
+    <div class="services-grid">
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">📊</div>
+        <h3>Investment Advisory</h3>
+        <p>Get personalized mutual fund recommendations based on your financial goals, risk appetite, and investment timeline. Expert guidance from SEBI registered advisors.</p>
+      </div>
+      
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">🎯</div>
+        <h3>Goal-Based Planning</h3>
+        <p>Whether it's retirement, child's education, home purchase, or wealth creation - we help you plan and select the right funds to achieve your dreams.</p>
+      </div>
+      
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">📈</div>
+        <h3>Portfolio Management</h3>
+        <p>Regular monitoring, rebalancing, and optimization of your mutual fund portfolio. Stay on track with timely reviews and strategic adjustments.</p>
+      </div>
+      
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">💰</div>
+        <h3>Tax Saving (ELSS)</h3>
+        <p>Save up to ₹46,800 in taxes under Section 80C while building long-term wealth. Shortest lock-in period (3 years) among all tax-saving options.</p>
+      </div>
+      
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">🔄</div>
+        <h3>SIP & Lumpsum</h3>
+        <p>Start with as little as ₹500/month through SIP or invest lumpsum amounts. Flexible investment options with no upper limit. Easy setup and management.</p>
+      </div>
+      
+      <div class="service-card scroll-reveal">
+        <div class="service-icon">🤝</div>
+        <h3>Offline Support</h3>
+        <p>Visit our office for KYC, paperwork assistance, and in-person consultations. We handle all documentation and follow-ups on your behalf.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROLLING TESTIMONIALS ========== -->
+  <section class="testimonials-section">
+    <h2 class="section-title" style="color: white;">What Investors Say</h2>
+    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Real experiences from people who started their investment journey</p>
+    
+    <div class="testimonials-wrapper">
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">Starting my SIP was the best financial decision. Watching my wealth grow steadily gives me confidence about my future.</p>
+        <p class="testimonial-source">—</p>
+      </div>
+      
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">The guidance I received was clear and personalized. I finally understand where my money is going and why.</p>
+        <p class="testimonial-source">—</p>
+      </div>
+      
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">Professional service with instant WhatsApp support. They made mutual fund investing simple and stress-free for me.</p>
+        <p class="testimonial-source">—</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MUTUAL FUND ADVANTAGES ========== -->
+  <section class="section" id="learn">
+    <h2 class="section-title scroll-reveal">Why Choose Mutual Funds?</h2>
+    <p class="section-subtitle scroll-reveal">Discover the powerful benefits of mutual fund investing</p>
+    
+    <div class="advantages-grid">
+      <div class="advantage-card scroll-reveal">
+        <h3>🎓 Professional Management</h3>
+        <p>Your money is managed by experienced fund managers with deep market knowledge, research teams, and proven track records. They analyze hundreds of stocks and make informed decisions daily.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>🌐 Diversification</h3>
+        <p>Instead of putting all eggs in one basket, mutual funds invest across 30-100+ companies, multiple sectors, and asset classes. This significantly reduces risk compared to individual stock investing.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>💵 Affordable Entry</h3>
+        <p>Start investing with just ₹500-₹1000 per month through SIP. No need to wait for large capital. Small amounts invested regularly can create substantial wealth over time through compounding.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>💧 High Liquidity</h3>
+        <p>Redeem your investments anytime (except ELSS) and receive money in 1-3 business days. No need to find buyers or negotiate prices - instant liquidity at current NAV.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>🔒 SEBI Regulated & Safe</h3>
+        <p>All mutual funds are strictly regulated by SEBI with mandatory disclosures, regular audits, and investor protection norms. Your money is held by independent custodians, not fund houses.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>💰 Tax Efficiency</h3>
+        <p>Long-term equity gains (>1 year) taxed at only 12.5% above ₹1.25 lakh. ELSS funds offer 80C deduction up to ₹1.5 lakh. Better tax treatment than fixed deposits and many other investments.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>📊 Transparency</h3>
+        <p>Daily NAV updates, monthly portfolio disclosures, and detailed fact sheets. Know exactly where your money is invested, how it's performing, and all associated costs.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>🔄 Flexibility</h3>
+        <p>Change SIP amounts, pause for 3 months, switch between funds, set up systematic withdrawal plans (SWP), or do portfolio rebalancing - all without penalties. Complete control in your hands.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>⚡ Power of Compounding</h3>
+        <p>Returns generate returns over time. A monthly SIP of ₹10,000 for 20 years at 12% annual return can grow to ₹1 crore+. The longer you stay invested, the more powerful compounding becomes.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>📈 Rupee Cost Averaging</h3>
+        <p>SIP automatically buys more units when markets are low and fewer when high. This averages your purchase cost and reduces timing risk - a smart way to handle market volatility.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>🎯 Goal-Based Investing</h3>
+        <p>Different funds for different goals and timelines. Short-term goals (1-3 years) - debt funds. Long-term goals (7+ years) - equity funds. Align investments with life milestones.</p>
+      </div>
+      
+      <div class="advantage-card scroll-reveal">
+        <h3>📱 Easy to Track</h3>
+        <p>Monitor all your investments online through fund house websites, CAMS/Karvy portals, or mobile apps. Consolidated statements, performance tracking, and transaction history at your fingertips.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPARISON TABLE ========== -->
+  <section class="section">
+    <h2 class="section-title scroll-reveal">Investment Options Compared</h2>
+    <p class="section-subtitle scroll-reveal">See why mutual funds are preferred by millions of investors</p>
+    
+    <div class="comparison-container scroll-reveal">
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="highlight">Mutual Funds</th>
+              <th>Direct Stocks</th>
+              <th>Fixed Deposits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Risk Level</strong></td>
+              <td class="highlight">Moderate (Diversified across 50-100 stocks)</td>
+              <td>High (Single company risk)</td>
+              <td>Very Low (Guaranteed)</td>
+            </tr>
+            <tr>
+              <td><strong>Historical Returns</strong></td>
+              <td class="highlight">10-15% annually (equity funds)*</td>
+              <td>Highly variable (Can be negative)</td>
+              <td>5-7% annually</td>
+            </tr>
+            <tr>
+              <td><strong>Liquidity</strong></td>
+              <td class="highlight">High - Redeem anytime, money in 1-3 days</td>
+              <td>High (but need buyers)</td>
+              <td>Low (Penalty on early withdrawal)</td>
+            </tr>
+            <tr>
+              <td><strong>Management</strong></td>
+              <td class="highlight">Professional experts with research teams</td>
+              <td>You must research & decide</td>
+              <td>Bank-managed</td>
+            </tr>
+            <tr>
+              <td><strong>Minimum Investment</strong></td>
+              <td class="highlight">₹500/month (SIP) or ₹1,000 (lumpsum)</td>
+              <td>₹5,000-₹50,000+ per stock</td>
+              <td>₹1,000-₹10,000</td>
+            </tr>
+            <tr>
+              <td><strong>Tax Benefits</strong></td>
+              <td class="highlight">Yes - ELSS saves tax (80C), LTCG at 12.5%</td>
+              <td>No deduction, LTCG at 12.5%</td>
+              <td>No benefit, interest fully taxable</td>
+            </tr>
+            <tr>
+              <td><strong>Diversification</strong></td>
+              <td class="highlight">Built-in (50-100+ companies, sectors)</td>
+              <td>Must buy multiple stocks yourself</td>
+              <td>No diversification</td>
+            </tr>
+            <tr>
+              <td><strong>Ideal Investment Period</strong></td>
+              <td class="highlight">Flexible: 1-3 years (debt), 5+ years (equity)</td>
+              <td>Long-term (5+ years)</td>
+              <td>Short-term (1-5 years)</td>
+            </tr>
+            <tr>
+              <td><strong>Ease of Investing</strong></td>
+              <td class="highlight">Very easy - Automated SIP, paperless</td>
+              <td>Requires market knowledge & timing</td>
+              <td>Easy but manual renewal</td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td class="highlight">All investors - Beginners to experts</td>
+              <td>Experienced investors only</td>
+              <td>Very conservative, short-term needs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">* Past performance is not indicative of future results. Based on historical 10-15 year equity fund averages. Mutual fund investments are subject to market risks.</p>
+  </section>
+
+  <!-- ========== TYPES OF MUTUAL FUNDS ========== -->
+  <section class="section">
+    <h2 class="section-title scroll-reveal">Types of Mutual Funds</h2>
+    <p class="section-subtitle scroll-reveal">Find the right fund category for your investment goals</p>
+    
+    <div class="accordion">
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>📈 Equity Funds - High Growth Potential</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Invest 80-100% in stocks across large, mid, or small-cap companies. Target: 12-18% annual returns. Best for long-term goals (7+ years) like retirement or wealth creation. Higher volatility but historically strong returns. Sub-categories: Large-cap (stable), Mid-cap (balanced), Small-cap (aggressive), Multi-cap (diversified), Sectoral (focused themes).
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>🛡️ Debt Funds - Steady & Stable</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Invest in government bonds, corporate bonds, and fixed-income securities. Target: 6-9% annual returns. Lower risk than equity, ideal for short to medium-term goals (1-5 years). Better tax efficiency than FDs after 3 years. Categories include liquid funds, short-duration, corporate bond, gilt funds, and dynamic bond funds.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>⚖️ Hybrid Funds - Best of Both Worlds</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Balanced mix of equity (growth) and debt (stability). Target: 8-12% annual returns. Moderate risk suitable for medium-term goals (3-7 years). Automatic rebalancing by fund manager. Types: Aggressive Hybrid (65-80% equity), Conservative Hybrid (75-90% debt), Balanced Advantage (dynamic allocation based on market conditions).
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>💧 Liquid Funds - Your Smart Savings Account</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Invest in ultra short-term debt (up to 91 days maturity). Target: 4-6% annual returns. Very low risk, high liquidity with redemption in 1 working day. Better alternative to savings accounts for emergency funds or parking surplus cash. No entry/exit load. Ideal for 1 day to 6 months investment horizon.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>📊 Index Funds - Low-Cost Market Tracking</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Passively replicate market indices like Nifty 50, Sensex, or Nifty Next 50. Target: Match index returns (10-12% historically). Extremely low expense ratio (0.1-0.5% vs 1-2% for active funds). Perfect for long-term investors (10+ years) who believe in consistent market growth. No fund manager bias or stock-picking risk.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>💰 ELSS - Tax Saving with Growth</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Equity Linked Savings Scheme for tax benefits under Section 80C. Save up to ₹46,800 in taxes annually (₹1.5 lakh investment at 30% tax bracket). Lock-in: 3 years (shortest among all 80C options). Target: 12-15% annual returns. Dual benefit of wealth creation and tax saving. Invests 80%+ in equities for long-term capital appreciation.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SIP/LUMPSUM CALCULATOR ========== -->
+  <section class="section" id="calculator" style="background: linear-gradient(135deg, #F0F9FF, #E0F2FE); padding: 5rem 1.5rem; margin-top: 3rem;">
+    <h2 class="section-title scroll-reveal">💹 Investment Calculator</h2>
+    <p class="section-subtitle scroll-reveal">Calculate your wealth potential with SIP or lumpsum investments</p>
+    
+    <div class="calculator-container scroll-reveal">
+      <div class="calculator-tabs">
+        <button class="tab-btn active" data-tab="sip">SIP Calculator</button>
+        <button class="tab-btn" data-tab="lumpsum">Lumpsum Calculator</button>
+      </div>
+      
+      <!-- SIP Inputs -->
+      <div id="sip-calculator" class="calculator-inputs">
+        <div class="input-group">
+          <label for="sip-amount">Monthly Investment (₹)</label>
+          <div class="slider-container">
+            <input type="range" id="sip-amount" class="slider" min="500" max="100000" value="5000" step="500">
+            <div class="slider-value" id="sip-amount-value">₹5,000</div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="sip-years">Investment Period (Years)</label>
+          <div class="slider-container">
+            <input type="range" id="sip-years" class="slider" min="1" max="30" value="10">
+            <div class="slider-value" id="sip-years-value">10 years</div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="sip-rate">Expected Annual Return (%)</label>
+          <div class="slider-container">
+            <input type="range" id="sip-rate" class="slider" min="1" max="30" value="12" step="0.5">
+            <div class="slider-value" id="sip-rate-value">12%</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lumpsum Inputs -->
+      <div id="lumpsum-calculator" class="calculator-inputs" style="display: none;">
+        <div class="input-group">
+          <label for="lumpsum-amount">Investment Amount (₹)</label>
+          <div class="slider-container">
+            <input type="range" id="lumpsum-amount" class="slider" min="10000" max="10000000" value="100000" step="10000">
+            <div class="slider-value" id="lumpsum-amount-value">₹1,00,000</div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="lumpsum-years">Investment Period (Years)</label>
+          <div class="slider-container">
+            <input type="range" id="lumpsum-years" class="slider" min="1" max="30" value="10">
+            <div class="slider-value" id="lumpsum-years-value">10 years</div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="lumpsum-rate">Expected Annual Return (%)</label>
+          <div class="slider-container">
+            <input type="range" id="lumpsum-rate" class="slider" min="1" max="30" value="12" step="0.5">
+            <div class="slider-value" id="lumpsum-rate-value">12%</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Results -->
+      <div class="calculator-results">
+        <div class="result-card">
+          <div class="result-label">Invested Amount</div>
+          <div class="result-value" id="invested-amount">₹6,00,000</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-label">Estimated Returns</div>
+          <div class="result-value" id="estimated-returns">₹5,80,356</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-label">Total Value</div>
+          <div class="result-value" id="total-value">₹11,80,356</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-label">CAGR</div>
+          <div class="result-value" id="cagr-value">12.0%</div>
+        </div>
+      </div>
+      
+      <!-- Chart -->
+      <div class="chart-container">
+        <canvas id="investmentChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ SECTION ========== -->
+  <section class="section">
+    <h2 class="section-title scroll-reveal">❓ Frequently Asked Questions</h2>
+    <p class="section-subtitle scroll-reveal">Everything you need to know about getting started</p>
+    
+    <div class="accordion">
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>What is the minimum investment to start?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            You can start a SIP with just ₹500 per month in most mutual funds. For lumpsum investments, the minimum ranges from ₹1,000 to ₹5,000 depending on the fund. This makes mutual funds accessible to all income groups.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>Should I choose SIP or lumpsum investment?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            SIP is recommended for salaried individuals as it builds discipline, reduces timing risk through rupee cost averaging, and requires less capital upfront. Lumpsum works best when you have a large corpus available (bonus, inheritance) and want immediate market exposure. Many investors do both - regular SIP plus occasional lumpsum.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>How are mutual funds taxed in India?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Equity Funds: Long-term gains (>1 year) above ₹1.25 lakh taxed at 12.5%. Short-term gains taxed at 20%. Debt Funds: All gains taxed as per your income tax slab. ELSS: Investment up to ₹1.5 lakh qualifies for 80C deduction. Tax is deducted at source only on debt fund dividends.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>What are exit load and expense ratio?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Exit Load: A fee (typically 1%) charged if you redeem within a specified period (usually 1 year). Encourages long-term investing. Expense Ratio: Annual fund management fee (0.5-2.5% of your investment) automatically deducted from returns. Lower is better - index funds have the lowest (0.1-0.5%).
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>How do I start investing through your services?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Simple 4-step process: 1) Fill the Quick Connect form and send us a WhatsApp message. 2) We'll discuss your goals and recommend suitable funds. 3) Visit our office with PAN, Aadhaar, and bank details for KYC. 4) Complete application and start investing. We handle all paperwork and follow-ups. You can track investments online 24/7.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>Can I modify or stop my SIP anytime?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Absolutely! You have complete flexibility - increase or decrease SIP amount, pause SIP for up to 3 months, stop permanently, or switch to another fund. No penalties for these changes. Many investors increase their SIP by 10-15% annually as income grows (called step-up SIP).
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>Are mutual funds safe? What about SEBI regulation?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Mutual funds are highly regulated by SEBI with strict compliance requirements. Your money is held by independent custodian banks (not fund houses), ensuring safety. All transactions are transparent with daily NAV updates. However, market risk exists - returns fluctuate based on underlying securities. Diversification and long-term investing reduce this risk significantly.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>What is NAV and how does it work?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            NAV (Net Asset Value) is the per-unit price of a mutual fund, calculated daily after market close. It's total fund assets minus liabilities divided by number of units. When you invest ₹10,000 at NAV ₹50, you get 200 units. Your investment value = units × current NAV. NAV goes up when underlying stocks/bonds perform well.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>How long should I stay invested in mutual funds?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            Depends on fund type and goals. Equity Funds: Minimum 5-7 years for wealth creation (longer is better). Debt Funds: 1-5 years for moderate returns. ELSS: Mandatory 3-year lock-in, recommended 7+ years. Liquid Funds: Flexible, even 1 day. The longer you stay in equity funds, the higher your probability of positive returns due to market cycles.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item scroll-reveal">
+        <div class="accordion-header">
+          <span>Do I need to monitor my investments daily?</span>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            No! In fact, checking daily NAV can cause unnecessary anxiety during market volatility. Review your portfolio quarterly or half-yearly. Focus on long-term goals rather than short-term fluctuations. We provide free annual portfolio review to all clients and alert you if any action is needed (rebalancing, underperformance, etc.).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="section" id="contact" style="background: white; padding: 5rem 1.5rem;">
+    <h2 class="section-title scroll-reveal">📍 Get In Touch</h2>
+    <p class="section-subtitle scroll-reveal">Ready to start your investment journey? Connect with us today</p>
+    
+    <div class="contact-card scroll-reveal">
+      <h3>Elevate Wealth Services</h3>
+      <div class="contact-info">
+        <p>📍 Cash Dhara Bazar, Karmo Deori Chownk, Near Bawa Lal Mandir </p>
+        <p>📞 +91 98155 19057 (WhatsApp Only)</p>
+        <p>📧 arvinder@elevatewealthservices.com</p>
+        <p>🕐 Monday - Saturday: 9:00 AM - 5:00 PM</p>
+        <p style="margin-top: 1rem; font-size: 0.95rem;">🎯 AMFI Registered ARN: 332035 | AMFI Certified</p>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="#home" class="btn-primary" style="font-size: 1.15rem; padding: 1.2rem 3rem;">
+        📱 Connect on WhatsApp Now
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== DISCLAIMER ========== -->
+  <div class="disclaimer">
+    <strong>⚠️ Important Disclaimer:</strong> Mutual Fund investments are subject to market risks. Read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. The information provided is for general information purposes only and does not constitute personalized investment advice. Consult with a qualified financial advisor before making investment decisions. SEBI Registration does not guarantee performance or provide protection against market losses.
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Elevate Wealth</h3>
+        <p>AMFI registered mutual fund distributor committed to helping individuals achieve financial freedom through expert guidance and personalized investment solutions.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="#services">Our Services</a>
+        <a href="#calculator">SIP Calculator</a>
+        <a href="#learn">Learn About MF</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <a href="#learn">Investment Guide</a>
+        <a href="#calculator">Calculate Returns</a>
+        <a href="#">Download Brochure</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>📱 WhatsApp: +91 98155 19057</p>
+        <p>📧 arvinder@elevatewealthservices.com</p>
+        <p>🌐 📍 Cash Dhara Bazar, Karmo Deori Chownk, Near Bawa Lal Mandir</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Elevate Wealth Services. All rights reserved.</p>
+      <p style="margin-top: 0.5rem;">SEBI Reg: ARN-332035 | AMFI Certified | Built for Indian Investors</p>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ==================== CONFIGURATION ====================
+    const WHATSAPP_NUMBER = "9815519057"; // REPLACE WITH YOUR ACTUAL NUMBER
+    
+    // ==================== NAVBAR SCROLL ====================
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // ==================== SCROLL REVEAL ====================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    
+    // ==================== ACCORDION (COMPLETELY FIXED) ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      
+      accordionHeaders.forEach(function(header) {
+        header.addEventListener('click', function(e) {
+          e.preventDefault();
+          const item = this.closest('.accordion-item');
+          const wasActive = item.classList.contains('active');
+          
+          document.querySelectorAll('.accordion-item').forEach(function(accordionItem) {
+            accordionItem.classList.remove('active');
+          });
+          
+          if (!wasActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+    
+    // ==================== CALCULATOR ====================
+    let currentTab = 'sip';
+    let investmentChart = null;
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTab = btn.dataset.tab;
+        
+        if (currentTab === 'sip') {
+          document.getElementById('sip-calculator').style.display = 'grid';
+          document.getElementById('lumpsum-calculator').style.display = 'none';
+          calculateSIP();
+        } else {
+          document.getElementById('sip-calculator').style.display = 'none';
+          document.getElementById('lumpsum-calculator').style.display = 'grid';
+          calculateLumpsum();
+        }
+      });
+    });
+    
+    const updateSlider = (slider, valueElement, prefix = '₹', suffix = '') => {
+      slider.addEventListener('input', () => {
+        let displayValue = parseInt(slider.value).toLocaleString('en-IN');
+        if (prefix) displayValue = prefix + displayValue;
+        if (suffix) displayValue = displayValue + suffix;
+        valueElement.textContent = displayValue;
+        
+        const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${percentage}%, #E5E7EB ${percentage}%, #E5E7EB 100%)`;
+        
+        if (currentTab === 'sip') calculateSIP();
+        else calculateLumpsum();
+      });
+    };
+    
+    const sipAmount = document.getElementById('sip-amount');
+    const sipYears = document.getElementById('sip-years');
+    const sipRate = document.getElementById('sip-rate');
+    updateSlider(sipAmount, document.getElementById('sip-amount-value'), '₹', '');
+    updateSlider(sipYears, document.getElementById('sip-years-value'), '', ' years');
+    updateSlider(sipRate, document.getElementById('sip-rate-value'), '', '%');
+    
+    const lumpsumAmount = document.getElementById('lumpsum-amount');
+    const lumpsumYears = document.getElementById('lumpsum-years');
+    const lumpsumRate = document.getElementById('lumpsum-rate');
+    updateSlider(lumpsumAmount, document.getElementById('lumpsum-amount-value'), '₹', '');
+    updateSlider(lumpsumYears, document.getElementById('lumpsum-years-value'), '', ' years');
+    updateSlider(lumpsumRate, document.getElementById('lumpsum-rate-value'), '', '%');
+    
+    function calculateSIP() {
+      const monthly = parseInt(sipAmount.value);
+      const years = parseInt(sipYears.value);
+      const rate = parseFloat(sipRate.value);
+      
+      const monthlyRate = rate / 12 / 100;
+      const months = years * 12;
+      
+      const futureValue = monthly * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+      const invested = monthly * months;
+      const returns = futureValue - invested;
+      const cagr = (Math.pow(futureValue / invested, 1 / years) - 1) * 100;
+      
+      updateResults(invested, returns, futureValue, cagr);
+      updateChart(years, monthly, rate, 'sip');
+    }
+    
+    function calculateLumpsum() {
+      const principal = parseInt(lumpsumAmount.value);
+      const years = parseInt(lumpsumYears.value);
+      const rate = parseFloat(lumpsumRate.value);
+      
+      const futureValue = principal * Math.pow(1 + rate / 100, years);
+      const invested = principal;
+      const returns = futureValue - invested;
+      const cagr = rate;
+      
+      updateResults(invested, returns, futureValue, cagr);
+      updateChart(years, principal, rate, 'lumpsum');
+    }
+    
+    function updateResults(invested, returns, total, cagr) {
+      document.getElementById('invested-amount').textContent = '₹' + Math.round(invested).toLocaleString('en-IN');
+      document.getElementById('estimated-returns').textContent = '₹' + Math.round(returns).toLocaleString('en-IN');
+      document.getElementById('total-value').textContent = '₹' + Math.round(total).toLocaleString('en-IN');
+      document.getElementById('cagr-value').textContent = cagr.toFixed(1) + '%';
+    }
+    
+    function updateChart(years, amount, rate, type) {
+      const labels = [];
+      const investedData = [];
+      const returnsData = [];
+      
+      for (let year = 1; year <= years; year++) {
+        labels.push(`Year ${year}`);
+        
+        if (type === 'sip') {
+          const monthlyRate = rate / 12 / 100;
+          const months = year * 12;
+          const invested = amount * months;
+          const futureValue = amount * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+          
+          investedData.push(Math.round(invested));
+          returnsData.push(Math.round(futureValue));
+        } else {
+          const invested = amount;
+          const futureValue = amount * Math.pow(1 + rate / 100, year);
+          
+          investedData.push(Math.round(invested));
+          returnsData.push(Math.round(futureValue));
+        }
+      }
+      
+      if (investmentChart) {
+        investmentChart.destroy();
+      }
+      
+      const ctx = document.getElementById('investmentChart').getContext('2d');
+      investmentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Invested Amount',
+              data: investedData,
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4
+            },
+            {
+              label: 'Total Value',
+              data: returnsData,
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                font: { size: 14, weight: 'bold' },
+                padding: 20
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ₹' + context.parsed.y.toLocaleString('en-IN');
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  if (value >= 10000000) return '₹' + (value / 10000000).toFixed(1) + 'Cr';
+                  if (value >= 100000) return '₹' + (value / 100000).toFixed(1) + 'L';
+                  return '₹' + (value / 1000).toFixed(0) + 'K';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+    
+    calculateSIP();
+    
+    // ==================== WHATSAPP FORM ====================
+    document.getElementById('whatsappForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      
+      const message = `Hello! I'm interested in starting my mutual fund investment journey.
+
+📋 My Details:
+👤 Name: ${name}
+📱 Phone: ${phone}
+📧 Email: ${email}
+
+I would like to discuss investment options and get guidance on which funds suit my goals. Please connect with me at your earliest convenience.
+
+Thank you!`;
+      
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+      
+      const leadData = { name, phone, email, timestamp: new Date().toISOString() };
+      localStorage.setItem('mfd_lead_' + Date.now(), JSON.stringify(leadData));
+    });
+    
+    // ==================== SMOOTH SCROLLING ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
