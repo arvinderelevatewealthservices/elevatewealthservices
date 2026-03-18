@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Book a Consultation - ElevateWealthServices</title>
+    <meta name="description" content="Book a free consultation with ElevateWealthServices for mutual fund advisory, insurance solutions, or trading & investing guidance.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Book a Consultation - ElevateWealthServices">
+    <meta property="og:description" content="Schedule your free consultation for mutual funds, insurance, or trading & investing support.">
+    <meta property="og:url" content="https://elevatewealthservices.com/contact.html">
+    <meta property="og:image" content="https://elevatewealthservices.com/images/og-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Consultation - ElevateWealthServices">
+    <meta name="twitter:description" content="Connect with us for tailored financial guidance across mutual funds, insurance, and trading & investing.">
+    <meta name="twitter:image" content="https://elevatewealthservices.com/images/og-banner.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            section { padding: 2rem 1rem !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/ElevateWealthServicesLogo.png" alt="ElevateWealthServices">
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="nav-cta">Book a Consultation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="padding: 3rem 1rem; background: linear-gradient(to bottom right, #f0f9ff, #eff6ff, white);">
+        <div class="max-w-4xl" style="text-align: center;">
+            <h1 style="font-size: 2.25rem; font-weight: 700; color: #111827; margin-bottom: 1rem;">Book Your Free Consultation</h1>
+            <p style="font-size: 1rem; color: #4b5563; line-height: 1.6;">Ready to take control of your financial future? Schedule a free, no-obligation session with our experts today.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section style="padding: 3rem 1rem; background: white;">
+        <div class="max-w-7xl">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+                <!-- Contact Form -->
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); padding: 1.5rem; border: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem;">Book Your Free Consultation</h2>
+                    <p style="color: #4b5563; margin-bottom: 1.5rem;">Fill in your details below and continue on WhatsApp to submit your consultation request.</p>
+
+                    <form id="contactForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <label for="name" style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Full Name *</label>
+                            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;" placeholder="Enter your full name">
+                        </div>
+
+                        <div>
+                            <label for="phone" style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;" placeholder="+91 98155 19057">
+                        </div>
+
+                        <div>
+                            <label for="email" style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Email Address</label>
+                            <input type="email" id="email" name="email" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;" placeholder="your@email.com">
+                        </div>
+
+                        <div>
+                            <label for="service" style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Service Interested In *</label>
+                            <select id="service" name="service" required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: inherit; font-size: 1rem;">
+                                <option value="">Select a service</option>
+                                <option value="mutual-funds">Mutual Fund Advisory</option>
+                                <option value="insurance">Insurance Solutions</option>
+                                <option value="trading">Trading & Investing</option>
+                                <option value="all">All Services / General Consultation</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Message (Optional)</label>
+                            <textarea id="message" name="message" rows="4" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Tell us about your financial goals..."></textarea>
+                        </div>
+
+                        <button type="submit" style="width: 100%; background: linear-gradient(to right, #0284c7, #0369a1); color: white; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; border: none; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <span>Continue on WhatsApp</span>
+                        </button>
+
+                        <p style="font-size: 0.875rem; color: #6b7280; text-align: center;">By continuing, you'll open WhatsApp with a pre-filled professional message including your details. We'll never share your information.</p>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 1rem;">Get In Touch</h2>
+                        <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">Have questions? Reach out to us through any of these channels. We're here to help you make informed financial decisions.</p>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(to bottom right, #eff6ff, #dbeafe); border-radius: 0.75rem;">
+                        <span style="font-size: 1.5rem; flex-shrink: 0; margin-top: 0.25rem;">📞</span>
+                        <div>
+                            <h3 style="font-weight: 600; color: #111827; margin-bottom: 0.25rem;">Phone</h3>
+                            <a href="tel:+919815519057" style="color: #0284c7; text-decoration: none; font-weight: 500; font-size: 1.125rem;">+91 98155 19057</a>
+                            <p style="font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem;">Available: Mon-Sat, 9:30 AM - 6:30 PM</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(to bottom right, #f0fdf4, #dcfce7); border-radius: 0.75rem;">
+                        <span style="font-size: 1.5rem; flex-shrink: 0; margin-top: 0.25rem;">📧</span>
+                        <div>
+                            <h3 style="font-weight: 600; color: #111827; margin-bottom: 0.25rem;">Email</h3>
+                            <a href="mailto:arvinder@elevatewealthservices.com" style="color: #16a34a; text-decoration: none; font-weight: 500; word-break: break-all;">arvinder@elevatewealthservices.com</a>
+                            <p style="font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem;">We'll respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(to bottom right, #f3e8ff, #ede9fe); border-radius: 0.75rem;">
+                        <span style="font-size: 1.5rem; flex-shrink: 0; margin-top: 0.25rem;">📍</span>
+                        <div>
+                            <h3 style="font-weight: 600; color: #111827; margin-bottom: 0.25rem;">Office Address</h3>
+                            <p style="color: #374151;">ElevateWealthServices<br>Cash Dhara Bazar, Near Bawa Lal Mandir<br>Karmon Deori, Amritsar</p>
+                            <p style="font-size: 0.875rem; color: #4b5563; margin-top: 0.5rem;">Walk-ins welcome during business hours</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(to bottom right, #fed7aa, #fdba74); border-radius: 0.75rem;">
+                        <span style="font-size: 1.5rem; flex-shrink: 0; margin-top: 0.25rem;">🕒</span>
+                        <div>
+                            <h3 style="font-weight: 600; color: #111827; margin-bottom: 0.25rem;">Business Hours</h3>
+                            <p style="color: #374151;">
+                                <strong>Monday - Friday:</strong> 9:30 AM - 6:30 PM<br>
+                                <strong>Saturday:</strong> 10:00 AM - 4:00 PM<br>
+                                <strong>Sunday:</strong> Closed
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- In-Person Visit CTA -->
+    <section style="padding: 3rem 1rem; background: #f9fafb;">
+        <div class="max-w-7xl">
+            <div style="background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); text-align: center;">
+                <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem;">Prefer to Visit Us in Person?</h2>
+                <p style="color: #4b5563; font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 48rem; margin-left: auto; margin-right: auto;">Our office in Amritsar is open for consultations. Schedule an appointment or drop by during business hours. We'd love to meet you!</p>
+                <a href="tel:+919815519057" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(to right, #0284c7, #0369a1); color: white; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; text-decoration: none; transition: all 0.3s ease;">
+                    <span>📞</span>
+                    <span>Call to Schedule Visit</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(to bottom right, #1f2937, #111827); color: #d1d5db;">
+        <div class="max-w-7xl" style="padding: 2.5rem 1rem;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem;">
+                        <img src="images/ElevateWealthServicesLogo.png" alt="ElevateWealthServices" style="height: 2.5rem; width: auto; object-fit: contain;">
+                    </div>
+                    <p style="color: #9ca3af; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.75rem;">Your trusted partner for Mutual Fund Advisory, Insurance Solutions, and Trading Services.</p>
+                    <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem;">
+                        <span>📍</span>
+                        <span>Cash Dhara Bazar, Near Bawa Lal Mandir, Karmon Deori, Amritsar</span>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3 style="color: white; font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <li><a href="index.html" style="color: #d1d5db; text-decoration: none; font-size: 0.85rem;">Home</a></li>
+                        <li><a href="about.html" style="color: #d1d5db; text-decoration: none; font-size: 0.85rem;">About Us</a></li>
+                        <li><a href="services.html" style="color: #d1d5db; text-decoration: none; font-size: 0.85rem;">Services</a></li>
+                        <li><a href="contact.html" style="color: #d1d5db; text-decoration: none; font-size: 0.85rem;">Book</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h3 style="color: white; font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem;">Services</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <li style="font-size: 0.85rem; color: #d1d5db;">Mutual Funds</li>
+                        <li style="font-size: 0.85rem; color: #d1d5db;">Life Insurance</li>
+                        <li style="font-size: 0.85rem; color: #d1d5db;">Health Insurance</li>
+                        <li style="font-size: 0.85rem; color: #d1d5db;">Trading & Investing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem;">
+                <p style="font-size: 0.8rem; color: #9ca3af; text-align: center; margin: 0;">© 2026 ElevateWealthServices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
