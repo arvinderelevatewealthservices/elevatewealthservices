@@ -75,6 +75,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedService = urlParams.get('service');
+  const serviceSelect = contactForm.querySelector('select[name="service"]');
+  if (selectedService && serviceSelect && ['mutual-funds', 'insurance', 'trading', 'loan-assistance', 'all'].includes(selectedService)) {
+    serviceSelect.value = selectedService;
+  }
+
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -90,6 +97,7 @@ if (contactForm) {
       'mutual-funds': 'Mutual Fund Advisory',
       insurance: 'Insurance Solutions',
       trading: 'Trading & Investing',
+      'loan-assistance': 'Loan Assistance',
       all: 'All Services / General Consultation'
     };
 
